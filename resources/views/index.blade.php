@@ -13,7 +13,7 @@
         content="admin, dashboard, dashboard ui, admin dashboard template, admin panel dashboard, admin panel html, admin panel html template, admin panel template, admin ui templates, administrative templates, best admin dashboard, best admin templates, bootstrap 4 admin template, bootstrap admin dashboard, bootstrap admin panel, html css admin templates, html5 admin template, premium bootstrap templates, responsive admin template, template admin bootstrap 4, themeforest html">
 
     <!-- FAVICON -->
-    <link rel="shortcut icon" type="image/x-icon" href="../assets/images/brand/favicon.ico" />
+    <link rel="shortcut icon" type="image/x-icon" href="{{ url('/assets') }}/images/brand/favicon.ico" />
 
     <!-- TITLE -->
     <title>{{ config('app.name') }} | @yield('title')</title>
@@ -25,7 +25,7 @@
 
     <!-- GLOBAL-LOADER -->
     <div id="global-loader">
-        <img src="../assets/images/loader.svg" class="loader-img" alt="Loader">
+        <img src="{{ url('/assets') }}/images/loader.svg" class="loader-img" alt="Loader">
     </div>
     <!-- /GLOBAL-LOADER -->
 

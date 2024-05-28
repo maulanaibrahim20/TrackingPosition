@@ -13,8 +13,10 @@ class DashboardController extends Controller
 
     public function management()
     {
+        return view('management.pages.dashboard.index');
     }
     public function user()
     {
+        return view('user.pages.dashboard.index');
     }
 }

@@ -3,7 +3,7 @@
 @section('content')
     <div class="col col-login mx-auto mt-7">
         <div class="text-center">
-            <img src="../assets/images/brand/logo.png" class="header-brand-img" alt="">
+            <img src="{{ url('/assets') }}" class="header-brand-img" alt="">
         </div>
     </div>
     <div class="container-login100">
