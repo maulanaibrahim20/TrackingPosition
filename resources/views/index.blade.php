@@ -84,6 +84,24 @@
     <!-- BACK-TO-TOP -->
     <a href="#top" id="back-to-top"><i class="fa fa-angle-up"></i></a>
     @include('template.component.style_js')
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    @if (session('success'))
+        <script type="text/javascript">
+            Swal.fire({
+                title: "Berhasil",
+                text: "{{ session('success') }}",
+                icon: "success"
+            });
+        </script>
+    @endif
+    @if (session('error'))
+        <script type="text/javascript">
+            Swal.fire({
+                title: "{{ session('error') }}",
+                icon: "error"
+            });
+        </script>
+    @endif
     @yield('js')
 </body>
 
