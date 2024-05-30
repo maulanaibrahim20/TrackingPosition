@@ -16,15 +16,23 @@ Route::group(["middleware" => ["guest"]], function() {
 });
 
 Route::group(["middleware" => ["is-login"]], function() {
-    Route::prefix('admin')->group(function () {
-        Route::prefix('kelola')->group(function () {
-            Route::resource('akun_management', AkunManagementController::class);
-            Route::get('akun_management/{id}/edit', [AkunManagementController::class, 'edit']);
+    Route::group(["middleware" => ["access:admin"]], function() {
+        Route::prefix('admin')->group(function () {
+            Route::prefix('kelola')->group(function () {
+                Route::resource('akun_management', AkunManagementController::class);
+                Route::get('akun_management/{id}/edit', [AkunManagementController::class, 'edit']);
+            });
+            Route::get('/dashboard', [DashboardController::class, 'admin']);
         });
-        Route::get('/dashboard', [DashboardController::class, 'admin']);
     });
-    Route::get('/management/dashboard', [DashboardController::class, 'management']);
-    Route::get('/user/dashboard', [DashboardController::class, 'user']);
+
+    Route::group(["middleware" => ["access:management"]], function() {
+        Route::get('/management/dashboard', [DashboardController::class, 'management']);
+    });
+
+    Route::group(["middleware" => ["access:yser"]], function() {
+        Route::get('/user/dashboard', [DashboardController::class, 'user']);
+    });
     Route::get('/logout', LogoutController::class)->name('auth.logout');
 });
 
