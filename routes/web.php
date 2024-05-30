@@ -30,7 +30,7 @@ Route::group(["middleware" => ["is-login"]], function() {
         Route::get('/management/dashboard', [DashboardController::class, 'management']);
     });
 
-    Route::group(["middleware" => ["access:yser"]], function() {
+    Route::group(["middleware" => ["access:user"]], function() {
         Route::get('/user/dashboard', [DashboardController::class, 'user']);
     });
     Route::get('/logout', LogoutController::class)->name('auth.logout');
