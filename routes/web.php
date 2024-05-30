@@ -11,8 +11,6 @@ Route::get('/', function () {
 });
 
 Route::group(["middleware" => ["guest"]], function() {
-    Route::get('/logout', LogoutController::class)
-        ->name('auth.logout');
     Route::get('/login', [LoginController::class, 'index']);
     Route::post('/login', [LoginController::class, 'proccess']);
 });
@@ -27,5 +25,6 @@ Route::group(["middleware" => ["is-login"]], function() {
     });
     Route::get('/management/dashboard', [DashboardController::class, 'management']);
     Route::get('/user/dashboard', [DashboardController::class, 'user']);
+    Route::get('/logout', LogoutController::class)->name('auth.logout');
 });
 
