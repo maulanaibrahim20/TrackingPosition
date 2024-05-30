@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Middleware\IsLoginMiddleware;
+use App\Http\Middleware\RedirectIfAuthenticated;
+use Illuminate\Auth\Middleware\Authorize;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
@@ -12,7 +15,11 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware) {
-        //
+        $middleware->alias([
+            "is-login" => IsLoginMiddleware::class,
+            "guest" => RedirectIfAuthenticated::class,
+            "access" => Authorize::class
+        ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //
