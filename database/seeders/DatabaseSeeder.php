@@ -16,5 +16,9 @@ class DatabaseSeeder extends Seeder
         // User::factory(10)->create();
 
         $this->call(UserSeeder::class);
+        $this->call(ProvinsiSeeder::class);
+        $this->call(KabupatenKotaSeeder::class);
+        $this->call(KecamatanSeeder::class);
+        $this->call(DesaSeeder::class);
     }
 }
